@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <header class="header">
+            <h1 class="row">Добавление товара</h1>
+            <div class="sorting__list">
+            <select v-model="select" class="sorting__name"><option v-for="option in options" :value="option.value">{{option.text}}</option></select>
+
+            </div>
+        </header>
+        <main class="main" id="main">
+            <form class="form" @submit.prevent>
+                <div class="row-1">
+                    <div class="required__field">
+                        <div class = "row-name" id="1">Наимеование товара</div>
+                        <img src="img/Rectangle 32.png" alt="" class="red__point">
+                    </div>
+                    <input 
+                    :value="Name" 
+                    @input="NameValue" 
+                    :class="{'red__input': reminder1 , 'default__input': default1}"
+                    type="text" 
+                    placeholder="Введите наименование товара">
+                    <div v-show="reminder1" class="reminder ">Поле является обязательным</div>
+                    <div v-if="reminder1 == false" class="off__reminder"></div>
+                </div>
+                <div class="row-1">
+                    <div class = "row-name">Описание товара</div>
+                    <input 
+                    :value="Description" 
+                    @input="DescriptionValue" 
+                    
+                    type="text" 
+                    class="text__control"
+                    placeholder="Введите описание товара">
+                </div>
+                <div class="row-1">
+                    <div class="required__field">
+                        <div 
+                        class = "row-name" 
+                        id="3">Ссылка на изорбражение товара</div>
+                        <img src="img/Rectangle 32.png" alt="" class="red__point">
+                    </div>
+                    
+                    <input :value="image"  @input="imageValue"  type="text"  :class="{'red__input': reminder2 , 'default__input': default2}" placeholder="Введите ссылку">
+                    <div v-show="reminder2"  class="reminder">Поле является обязательным</div>
+                    <div v-if="reminder2 == false"class="off__reminder"></div>
+                </div>
+                <div class="row-1">
+                    <div class="required__field">
+                        <div class = "row-name" id="4">Цена товара</div>
+                        <img src="img/Rectangle 32.png" alt="" class="red__point">
+                    </div>
+                    <input :value="Price" @input="PriceValue" type="text"  :class="{'red__input': reminder3 , 'default__input': default3}" placeholder="Введите цену">
+                    <div v-show="reminder3" class="reminder">Поле является обязательным</div>
+                    <div v-if="reminder3 == false"class="off__reminder"></div>
+                </div>
+                <button @click="addPost" :class="{'product__search': NoActiveBox , 'product__search1': ActiveBox}" >Добавить товар</button>
+    
+            </form>
+            <div class="products" >
+                <div class="cards" v-for="(card, index) in cards">
+                    <img @click="delCard(index)" class="del__card" src="img/Group 16.png" alt="">
+                    <img v-bind:src="card.img" alt="">
+                    <div class="card__description">
+                        <h2 class="product__name">{{card.name}}</h2>
+                        <div class="product__description">{{card.description}}</div>
+                        <div class="prouct__price">{{card.price}}</div>
+                    </div>
+                    
+                </div>
+                
+                
+            </div>
+        </main>
+        <footer class="footer">
+    
+        </footer>
+    </div>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
+    <script src="app.js"></script>
+
+</body>
+</html>
