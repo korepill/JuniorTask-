@@ -1,23 +1,18 @@
-
-
-
-
-
 new Vue({
     el: '#app',
     data: {
             cards: [
-                { img:'img/Rectangle 31.png', name:'Наименование товара ', description:' Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк'
+                { img:'img/Card.png', name:'Наименование товара ', description:' Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк'
                     ,price:' 12 000 руб.'},
-                { img:'img/Rectangle 31.png', name:'Наимеование товара ',description: 'Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк'
+                { img:'img/Card.png', name:'Наимеование товара ',description: 'Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк'
                     ,price:' 15 000 руб.'},
-                {  img: 'img/Rectangle 31.png',name: 'Наимеование товара ',description:' Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк'
+                {  img: 'img/Card.png',name: 'Наимеование товара ',description:' Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк'
                     ,price:' 10 000 руб.'},
-                { img: 'img/Rectangle 31.png',name: 'Наимеование товара ',description:' Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк'
+                { img: 'img/Card.png',name: 'Наимеование товара ',description:' Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк'
                     ,price:' 11 000 руб.'},
-                { img: 'img/Rectangle 31.png',name: 'Наимеование товара ',description:' Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк'
+                { img: 'img/Card.png',name: 'Наимеование товара ',description:' Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк'
                     ,price:' 10 000 руб.'},
-                { img: 'img/Rectangle 31.png',name: 'Наимеование товара ',description:' Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк'
+                { img: 'img/Card.png',name: 'Наимеование товара ',description:' Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк'
                     ,price:' 14 000 руб.'}],
 
             Name:'',
@@ -25,13 +20,8 @@ new Vue({
             image: '',
             Price: '',
             reminder1: false,
-            default1:true,
-            default2:true,
-            default3:true,
             reminder2: false,
             reminder3: false,
-            NoActiveBox: true,
-            ActiveBox: false,
             select: '1',
             options:[
                 { text:'По умолчанию', value:1},
@@ -45,27 +35,47 @@ new Vue({
         DescriptionValue(event)
         {
             this.Description = event.target.value;
-            
         },
         NameValue(event)
         {
             this.Name = event.target.value;
-           
-            
+            if(this.Name != ''){
+                this.reminder1 = false; 
+                console.log(this.reminder1)
+            }
         },
         imageValue(event)
         {
             this.image = event.target.value;
-            
-            
+            if(this.image != ''){
+                this.reminder2 = false; 
+                console.log(this.reminder2)
+            }
         },
         PriceValue(event)
         {
             this.Price = event.target.value;
-            
+            if(this.Price != ''){
+                this.reminder3 = false; 
+                console.log(this.reminder3)
+            }
         },
+
   
         addPost(){
+            if(this.Name == '')
+                {
+                    this.reminder1 = true;
+                }
+            if(this.image == '')
+                {
+                    this.reminder2 = true; 
+                }
+            if(this.Price == '')
+                {
+                    this.reminder3 = true; 
+                }
+
             if((this.Name && this.image && this.Price) != '')
             {
                 const newCard = {
@@ -75,53 +85,22 @@ new Vue({
                     price: this.Price
                 }
                 this.cards.push(newCard);
-
-            }
-            
-            if(this.Name == '')
-                {
-                    this.reminder1 = true;
-                    this.default1 = false;
-
-                }   
-            if(this.image == '')
-                {
-                    this.reminder2 = true; 
-                    this.default2 = false;
-                    
-                }
-            if(this.Price == '')
-                {
-                    this.reminder3 = true; 
-                    this.default3 = false;
-                }
+                this.Name ='',
+                this.Description ='',
+                this.image = '',
+                this.Price = '' 
+            }   
         },
                 
-            
-                
- 
         delCard: function(index){
             this.$delete(this.cards,index)
 
         },
-
-
-        
-
-
-
-
     },
 
-    
-
-
-
-
-
-
-
-
-
-
+    computed: {
+        ActiveBox(){
+            return (this.Name && this.image && this.Price && this.Description);
+        },
+    },
 })

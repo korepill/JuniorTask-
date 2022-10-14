@@ -28,7 +28,6 @@ body{
     border-radius: 4px;
 }
 
-
 .sorting__name{
     width: 105px;
     height: 15px;
@@ -38,8 +37,6 @@ body{
     font-weight: 400px;
     border: none;
     outline: none;
-
-    
 }
 
 #img{
@@ -48,23 +45,21 @@ body{
     margin: 14px 15.5px 15.5px 0px;
 }
 
-
-
-
 /*-------------main--------------*/
+
 .main{
     display: flex   ;
 }
+
+/*-----------FORM-----------------*/
 .form{
     width: 332px;
     height: 440px;
     background-color: #FFFEFB;
     border-radius: 4px;
-    padding-top: 24px;
-    margin-right: 16px;
+    padding-top: 24px;    
     margin-left: 32px;
 }
-
 
 .reminder{
     display: block;
@@ -76,7 +71,7 @@ body{
     line-height: 10px;
     letter-spacing: -0.02em;
     color: #FF8484;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
 }
 
 .off__reminder{
@@ -114,32 +109,14 @@ body{
     font-weight: 400;
     font-size: 12px;
     line-height: 15px;
-    
     outline: none;
-    
+    margin-bottom: 16px;
 }
-
 
 .row-name{
     font-size: 10px;
-   
     font-weight: 400;
     margin-bottom: 4px;
-    
-}
-#1{
-    width: 95px;
-    height: 13px;
-}
-#3{
-    width: 134px;
-    height: 13px;
-}
-
-#4{
-    width: 53px;
-    height: 13px;
-
 }
 
 .default__input{
@@ -159,7 +136,6 @@ body{
 .red__input{
     width: 284px;
     height: 36px;
-
     border-radius: 4px;
     outline: none;
     font-style: normal;
@@ -169,8 +145,6 @@ body{
     border-color:#FF8484;
     padding: 10px 0px 0px 16px;
 }
-
-
 
 .product__search{
     width: 284px;
@@ -187,7 +161,7 @@ body{
     text-align: center;
     letter-spacing: -0.02em;
     color: #B4B4B4;
-
+    cursor: url(img/hover.png),pointer;
 }
 
 .product__search1{
@@ -205,11 +179,10 @@ body{
     text-align: center;
     letter-spacing: -0.02em;
     color: #FFFFFF;
-
+    cursor: url(img/hover.png),pointer;
 }
 
-
-
+/*----------PRODUCTS-----------*/
 .cards{
     width: 332px;
     height: 423px;
@@ -218,7 +191,8 @@ body{
     border-radius: 4px;
     cursor: url(img/hover.png),pointer;
     position: relative;
-    
+    margin-bottom: 16px;
+    margin-left: 16px;
 }
 
 .del__card{
@@ -226,8 +200,6 @@ body{
     left: 93%;
     top: -4%;
     display: none;
-
-
 }
 
 .cards:hover .del__card{
@@ -238,21 +210,20 @@ body{
 }
 
 
-.card__foto{
+
+.products{
+    width: 1044px;
+    display: flex;
+    flex-wrap: wrap;    
+    align-items: stretch;  
+    align-content: stretch;  
+}
+
+.product__foto{
     width: 332px;
     height: 200px;
     border-radius: 4px 4px 0px 0px;
 }
-
-.products{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between ;
-    width: 1028px;
-    height: 870px;
-    
-}
-
 
 .product__name{
     width: 201px;
@@ -265,7 +236,6 @@ body{
     margin: 0px;
     margin: 16px 0px 16px 16px;
 }
-
 
 .product__description{
     width: 300px;
